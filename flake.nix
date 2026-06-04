@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dms.url = "github:AvengeMedia/DankMaterialShell";
   };
 
@@ -16,6 +21,7 @@
     nixpkgs,
     home-manager,
     dms,
+    nixvim,
     ...
   }: {
     nixosConfigurations.nix =
@@ -33,6 +39,9 @@
   	    home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
   	    home-manager.users.delphy = import ./home/delphy.nix;
+	    home-manager.extraSpecialArgs = {
+               inherit nixvim;
+            };
 	  }
         ];
       };

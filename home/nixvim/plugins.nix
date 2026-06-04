@@ -1,5 +1,5 @@
 {
-  programs.nivxim.plugins = {
+  programs.nixvim.plugins = {
     telescope.enable = true;
     neo-tree.enable = true;
     treesitter.enable = true;

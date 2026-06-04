@@ -1,8 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, config, nixvim, ... }:
 
 {
   home.username = "delphy";
   home.homeDirectory = "/home/delphy";
+
+  imports = [
+    nixvim.homeModules.nixvim
+
+    ./nixvim
+  ];
 
   programs.home-manager.enable = true;
   
