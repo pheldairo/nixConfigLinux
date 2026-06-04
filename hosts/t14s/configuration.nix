@@ -151,7 +151,9 @@
     wget
     curl
     unzip
-    
+    obsidian
+
+
     nautilus
     docker-compose
 
