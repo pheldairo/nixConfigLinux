@@ -11,7 +11,9 @@
   ];
 
   programs.home-manager.enable = true;
-  
+  nixpkgs.config.allowUnfree = true;
+
+
   # Shell
   programs.zsh = {
     enable = true;
@@ -28,6 +30,7 @@
   };
   home.packages = with pkgs; [
     zsh-powerlevel10k
+    discord-ptb
   ];
   home.stateVersion = "26.05";
 }

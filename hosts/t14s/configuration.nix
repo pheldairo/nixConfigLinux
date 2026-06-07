@@ -136,7 +136,8 @@
   ################################
   # Core Packages
   ################################
-
+  services.udisks2.enable = true;
+  services.gvfs.enable = true;
   environment.systemPackages = with pkgs; [
     firefox
     kitty
@@ -152,7 +153,6 @@
     curl
     unzip
     obsidian
-
 
     nautilus
     docker-compose
@@ -245,5 +245,5 @@
 
 
   # State Version
-  system.stateVersion = "26.05";
+  system.stateVersion = "26.11";
 }

@@ -7,5 +7,11 @@
     gitsigns.enable = true;
     which-key.enable = true;
     comment.enable = true;
+    snacks = {
+      enable = true;
+      settings = {
+        terminal.enabled = true;
+      };
+    };
   };
 }
