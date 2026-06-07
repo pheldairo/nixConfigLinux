@@ -31,6 +31,7 @@
   home.packages = with pkgs; [
     zsh-powerlevel10k
     discord-ptb
+    cider-2
   ];
   home.stateVersion = "26.05";
 }
