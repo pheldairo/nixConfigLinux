@@ -65,5 +65,11 @@
       key = "<leader>th";
       action = "<cmd>lua Snacks.terminal(nil, {win = {position = 'bottom', height = 8}})<CR>";
     }
+
+    {
+      mode = "n";
+      key = "<leader>e";
+      action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+    }
   ];
 }
