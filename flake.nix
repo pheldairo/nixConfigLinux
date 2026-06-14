@@ -29,7 +29,7 @@
         system = "x86_64-linux";
 
         specialArgs = {
-          inherit inputs;
+          inherit inputs; 
         };
 
         modules = [
@@ -37,13 +37,19 @@
 
           home-manager.nixosModules.home-manager {
   	    home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
+	      home-manager.useUserPackages = true;
   	    home-manager.users.delphy = import ./home/delphy.nix;
-	    home-manager.extraSpecialArgs = {
+	      home-manager.extraSpecialArgs = {
                inherit nixvim;
             };
-	  }
+	      }
         ];
       };
+      
+    devShells.x86_64-linux = {
+      rust-learning = import ./dev/rust-learning.nix {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      };
+    };
   };
 }

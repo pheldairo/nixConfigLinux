@@ -68,7 +68,7 @@
 
     {
       mode = "n";
-      key = "<leader>e";
+      key = "<leader>ve";
       action = "<cmd>lua vim.diagnostic.open_float()<CR>";
     }
   ];
