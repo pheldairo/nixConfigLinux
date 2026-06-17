@@ -19,7 +19,7 @@
       useOSProber = true;
     };
   };
-
+  time.hardwareClockInLocalTime = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   nixpkgs.config.allowUnfree = true;
   ################################

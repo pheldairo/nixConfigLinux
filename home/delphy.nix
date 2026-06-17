@@ -32,6 +32,7 @@
     zsh-powerlevel10k
     discord-ptb
     cider-2
+    obs-studio
   ];
   home.stateVersion = "26.05";
 }
