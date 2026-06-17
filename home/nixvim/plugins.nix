@@ -14,8 +14,7 @@
       };
     };
     copilot-lua.enable = true;
-    copilot-chat = {
-        enable = true;
-    };
+    cord.enable = true;
+    lazygit.enable = true;
   };
 }
