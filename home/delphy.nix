@@ -33,6 +33,7 @@
     discord-ptb
     cider-2
     obs-studio
+    prismlauncher
   ];
   home.stateVersion = "26.05";
 }
