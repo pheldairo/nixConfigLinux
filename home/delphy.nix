@@ -11,13 +11,12 @@
   ];
 
   programs.home-manager.enable = true;
-  nixpkgs.config.allowUnfree = true;
 
 
   # Shell
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
     initContent = ''
