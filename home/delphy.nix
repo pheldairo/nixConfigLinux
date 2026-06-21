@@ -20,7 +20,7 @@
     syntaxHighlighting.enable = true;
 
     initContent = ''
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/pohome-manager pkgshome-manager pkgshome-manager pkgswerlevel10k.zsh-theme
   
       if [[ -f ~/.p10k.zsh ]]; then
         source ~/.p10k.zsh
