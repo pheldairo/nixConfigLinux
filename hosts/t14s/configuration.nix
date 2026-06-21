@@ -5,10 +5,7 @@
     ./hardware-configuration.nix
   ];
 
-  ################################
   # Boot
-  ################################
-
   boot.loader = {
     efi.canTouchEfiVariables = true;
 
@@ -22,10 +19,7 @@
   time.hardwareClockInLocalTime = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   nixpkgs.config.allowUnfree = true;
-  ################################
   # Networking
-  ################################
-
   networking.hostName = "nix";
   networking.networkmanager.enable = true;
   
@@ -36,27 +30,18 @@
     xkb.options = "grp:alt_shift_toggle";
   };
 
-  ################################
   # Time / Locale
-  ################################
-
   time.timeZone = "Asia/Almaty";
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  ################################
   # Nix
-  ################################
-
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
 
-  ################################
   # User
-  ################################
-
   users.users.delphy = {
     isNormalUser = true;
     extraGroups = [
@@ -69,9 +54,7 @@
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
-  ################################
   # Hardware
-  ################################
 
   hardware.cpu.intel.updateMicrocode = true;
 
@@ -79,9 +62,7 @@
 
   services.power-profiles-daemon.enable = true;
 
-  ################################
   # Audio
-  ################################
 
   services.pipewire = {
     enable = true;
@@ -92,30 +73,22 @@
 
   security.rtkit.enable = true;
 
-  ################################
   # Graphics
-  ################################
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  ################################
   # Flatpak
-  ################################
 
   services.flatpak.enable = false;
 
-  ################################
   # Docker
-  ################################
 
   virtualisation.docker.enable = true;
 
-  ################################
   # Steam
-  ################################
 
   programs.steam = {
     enable = true;
@@ -127,21 +100,15 @@
     capSysNice = false;
   };
 
-  ################################
   # KDE Connect
-  ################################
 
   programs.kdeconnect.enable = true;
 
-  ################################
   # Waydroid
-  ################################
-
   virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.package = pkgs.waydroid-nftables;
 
-  ################################
   # Core Packages
-  ################################
   services.udisks2.enable = true;
   services.gvfs.enable = true;
   environment.systemPackages = with pkgs; [
@@ -150,6 +117,7 @@
     git
     gh
     distrobox
+    wl-clipboard
 
     neovim
     fastfetch
@@ -202,9 +170,7 @@
     wineWow64Packages.stable
   ];
 
-  ################################
   # Services
-  ################################
 
   services.openssh.enable = true;
   
@@ -230,9 +196,8 @@
   };
   programs.xwayland.enable = true;
   services.upower.enable = true; # Battery detection
-  ################################
+  
   # Firewall
-  ################################
 
   networking.firewall.enable = true;
 
@@ -248,8 +213,7 @@
   # Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
-
-
+  
   # State Version
   system.stateVersion = "26.05";
 }

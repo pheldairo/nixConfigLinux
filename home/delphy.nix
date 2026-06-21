@@ -27,6 +27,16 @@
       fi
     '';
   };
+
+  programs.kitty.settings = {
+    window_padding_width = 0;
+    window_margin_width = 0;
+    single_window_margin_width = 0;
+    cursor_trail = 1;
+    cursor_trail_decay = "0.1 0.4";
+    cursor_trail_start_threshold = 2;
+  };
+
   home.packages = with pkgs; [
     zsh-powerlevel10k
     discord-ptb
