@@ -18,13 +18,19 @@
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-
-    initContent = ''
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/pohome-manager pkgshome-manager pkgshome-manager pkgswerlevel10k.zsh-theme
-  
-      if [[ -f ~/.p10k.zsh ]]; then
-        source ~/.p10k.zsh
-      fi
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+    };
+    plugins = [
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+    ];
+    initExtra = ''
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
   };
 
@@ -43,6 +49,10 @@
     cider-2
     obs-studio
     prismlauncher
+    gh
+    sbsigntool
+    mokutil
+    efitools
   ];
   home.stateVersion = "26.05";
 }

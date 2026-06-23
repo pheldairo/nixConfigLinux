@@ -8,12 +8,15 @@
   # Boot
   boot.loader = {
     efi.canTouchEfiVariables = true;
-
-    grub = {
+    
+    limine = {
       enable = true;
-      efiSupport = true;
-      device = "nodev";
-      useOSProber = true;
+      secureBoot.enable = true;
+      extraEntries = ''
+        /Windows
+    protocol: efi
+    path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
     };
   };
   time.hardwareClockInLocalTime = true;
@@ -165,6 +168,11 @@
     vulkan-tools
     mangohud
     gamemode
+    
+    sbsigntool
+    mokutil
+    efitools
+    sbctl
 
     xwayland-satellite
     wineWow64Packages.stable
