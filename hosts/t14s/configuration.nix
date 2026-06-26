@@ -4,7 +4,12 @@
   imports = [
     ./hardware-configuration.nix
   ];
-
+  # Garbage Collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
   # Boot
   boot.loader = {
     efi.canTouchEfiVariables = true;

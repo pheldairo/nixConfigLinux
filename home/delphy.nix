@@ -50,9 +50,7 @@
     obs-studio
     prismlauncher
     gh
-    sbsigntool
-    mokutil
-    efitools
+    lutris
   ];
   home.stateVersion = "26.05";
 }
