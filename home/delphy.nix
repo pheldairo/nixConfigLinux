@@ -51,6 +51,7 @@
     prismlauncher
     gh
     lutris
+    kdePackages.ark
   ];
   home.stateVersion = "26.05";
 }
