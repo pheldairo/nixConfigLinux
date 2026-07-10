@@ -52,6 +52,7 @@
     gh
     lutris
     kdePackages.ark
+    pokemmo-installer
   ];
   home.stateVersion = "26.05";
 }

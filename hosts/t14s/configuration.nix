@@ -174,6 +174,9 @@
     mangohud
     gamemode
     
+    wireguard-tools
+    proton-vpn
+
     sbsigntool
     mokutil
     efitools
@@ -227,6 +230,9 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   
+
+  # VPN thing
+  networking.firewall.checkReversePath = false;
   # State Version
   system.stateVersion = "26.05";
 }
