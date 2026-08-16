@@ -2,6 +2,7 @@
   programs.nixvim = {
     enable = true;
     globals.mapleader = " ";
+    enableMan = false;
 
     opts = {
       number = true;

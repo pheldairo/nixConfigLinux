@@ -90,7 +90,7 @@
 
   # Flatpak
 
-  services.flatpak.enable = false;
+  services.flatpak.enable = true;
 
   # Docker
 
@@ -191,9 +191,8 @@
   services.openssh.enable = true;
   
 
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true; 
   # Niri + DMS
   programs.niri.enable = true;
   programs.dms-shell = {
@@ -233,6 +232,8 @@
 
   # VPN thing
   networking.firewall.checkReversePath = false;
+
+
   # State Version
   system.stateVersion = "26.05";
 }

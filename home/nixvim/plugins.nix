@@ -30,7 +30,6 @@
           terminal.enabled = true;
         };
       };
-      copilot-lua.enable = true;
       cord.enable = true;
       lazygit.enable = true;
       web-devicons.enable = true;

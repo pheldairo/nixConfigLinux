@@ -10,9 +10,20 @@
     ./nixvim
   ];
 
-  programs.home-manager.enable = true;
-
-
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true; 
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
+    ];
+  
+    config = {
+      common = {
+        default = [ "gnome" "gtk" ];
+      };
+    };
+  };
   # Shell
   programs.zsh = {
     enable = true;
@@ -45,7 +56,7 @@
 
   home.packages = with pkgs; [
     zsh-powerlevel10k
-    discord-ptb
+    discord
     cider-2
     obs-studio
     prismlauncher
@@ -53,6 +64,14 @@
     lutris
     kdePackages.ark
     pokemmo-installer
+    filezilla
+    chromium
+    winetricks
+    codex
+    distrobox
+    pkg-config
+    zoom-us
+    faugus-launcher
   ];
   home.stateVersion = "26.05";
 }
