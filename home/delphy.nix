@@ -72,6 +72,14 @@
     pkg-config
     zoom-us
     faugus-launcher
+    openrct2
+    teams-for-linux
+    foliate
+    appimage-run
+    thunderbird
+    snes9x
+    nicotine-plus
+    antigravity
   ];
   home.stateVersion = "26.05";
 }

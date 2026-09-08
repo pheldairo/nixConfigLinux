@@ -49,9 +49,15 @@
 	      }
         ];
       };
-      
+  
     devShells.x86_64-linux = {
       rust-learning = import ./dev/rust-learning.nix {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      };
+      golang = import ./dev/golang.nix {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      };
+      default = import ./dev/golang.nix {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
       };
     };
