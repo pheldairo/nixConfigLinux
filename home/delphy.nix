@@ -9,6 +9,10 @@
 
     ./nixvim
   ];
+  
+  home.sessionPath = [
+  "$HOME/.npm-global/bin"
+  ];
 
   xdg.portal = {
     enable = true;
@@ -67,7 +71,6 @@
     filezilla
     chromium
     winetricks
-    codex
     distrobox
     pkg-config
     zoom-us
@@ -80,6 +83,8 @@
     snes9x
     nicotine-plus
     antigravity
+    unrar
+    wl-mirror
   ];
   home.stateVersion = "26.05";
 }

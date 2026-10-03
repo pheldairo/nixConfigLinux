@@ -27,29 +27,30 @@
     dms,
     nixvim,
     ...
-  }: {
+  }: 
+  {
     nixosConfigurations.nix =
       nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         specialArgs = {
-          inherit inputs; 
+          inherit inputs;
         };
 
         modules = [
           ./hosts/t14s/configuration.nix
 
           home-manager.nixosModules.home-manager {
-  	    home-manager.useGlobalPkgs = true;
-	      home-manager.useUserPackages = true;
-  	    home-manager.users.delphy = import ./home/delphy.nix;
-	      home-manager.extraSpecialArgs = {
-               inherit nixvim;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.delphy = import ./home/delphy.nix;
+            home-manager.extraSpecialArgs = {
+              inherit nixvim;
             };
-	      }
+          }
         ];
       };
-  
+    
     devShells.x86_64-linux = {
       rust-learning = import ./dev/rust-learning.nix {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -62,4 +63,4 @@
       };
     };
   };
-}
+}	

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, mudfish-fhs, ... }:
 
 {
   imports = [
@@ -49,7 +49,11 @@
     "nix-command"
     "flakes"
   ];
-
+  
+  # Fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
   # User
   users.users.delphy = {
     isNormalUser = true;
@@ -204,11 +208,6 @@
       restartIfChanged = true;   # Auto-restart dms.service when dms-shell changes
     };
   
-    # Core features
-    enableSystemMonitoring = true;     # System monitoring widgets (dgop)
-    enableDynamicTheming = true;       # Wallpaper-based theming (matugen)
-    enableCalendarEvents = true;       # Calendar integration (khal)
-    enableClipboardPaste = true;       # Pasting from the clipboard history (wtype)
   };
   programs.xwayland.enable = true;
   services.upower.enable = true; # Battery detection
@@ -233,8 +232,7 @@
 
   # VPN thing
   networking.firewall.checkReversePath = false;
-
-
+  
   # State Version
   system.stateVersion = "26.05";
 }
