@@ -33,7 +33,28 @@
       cord.enable = true;
       lazygit.enable = true;
       web-devicons.enable = true;
-    };
+      blink-cmp = {
+        enable = true;
+
+        settings = {
+          keymap.preset = "default";
+
+          sources.default = [
+            "lsp"
+            "path"
+            "snippets"
+            "buffer"
+          ];
+
+          completion = {
+            documentation.auto_show = true;
+            ghost_text.enabled = true;
+          };
+  
+          signature.enabled = true;
+        };
+      };
+  };
     colorschemes.catppuccin.enable = true;
   };
 }
