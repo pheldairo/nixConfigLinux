@@ -1,4 +1,4 @@
-{ config, pkgs, mudfish-fhs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -10,6 +10,7 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
+  nix.settings.auto-optimise-store = true;
   # Boot
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -24,9 +25,19 @@
     '';
     };
   };
+  
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.evdi
+  ];
+
+  boot.kernelModules = [ "evdi" ];
+  boot.extraModprobeConfig = ''options evdi initial_device_count=1'';
+
   time.hardwareClockInLocalTime = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   nixpkgs.config.allowUnfree = true;
+
+
   # Networking
   networking.hostName = "nix";
   networking.networkmanager.enable = true;
@@ -125,14 +136,10 @@
   services.udisks2.enable = true;
   services.gvfs.enable = true;
   environment.systemPackages = with pkgs; [
-    firefox
     kitty
     git
-    gh
-    distrobox
     wl-clipboard
 
-    neovim
     fastfetch
     btop
     tree
@@ -144,13 +151,7 @@
     nautilus
     docker-compose
 
-    gcc
-    cmake
-    ninja
-    pkg-config
-
     nodejs_24
-    python3
 
     ffmpeg
     mpv
@@ -159,28 +160,20 @@
     pavucontrol
     lm_sensors
 
-    mangohud
-    vulkan-tools
-
     qbittorrent
 
-    obs-studio
-    onlyoffice-desktopeditors
-
     telegram-desktop
-    
+
     rclone
-    upower
     powertop
     pciutils
     usbutils
-    
-    vulkan-tools
-    mangohud
-    gamemode
-    
+
     wireguard-tools
     proton-vpn
+
+    lsfg-vk
+    lsfg-vk-ui
 
     sbsigntool
     mokutil
@@ -193,14 +186,11 @@
 
   # Services
 
-  services.openssh.enable = true;
-  
-
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true; 
   # Niri + DMS
   programs.niri.enable = true;
-  programs.dms-shell = {
+  programs.dux-shell = {
     enable = true;
 
     systemd = {
@@ -215,6 +205,9 @@
   # Firewall
 
   networking.firewall.enable = true;
+
+  # Firmware updates (LVFS)
+  services.fwupd.enable = true;
 
   # Intel Things
   services.thermald.enable = true;
@@ -231,7 +224,7 @@
   
 
   # VPN thing
-  networking.firewall.checkReversePath = false;
+  networking.firewall.checkReversePath = "loose";
   
   # State Version
   system.stateVersion = "26.05";
