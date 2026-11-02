@@ -14,34 +14,33 @@
   # Boot
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    
+
     limine = {
       enable = true;
       secureBoot.enable = true;
       extraEntries = ''
-        /Windows
-    protocol: efi
-    path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
-    '';
+            /Windows
+        protocol: efi
+        path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+      '';
     };
   };
-  
+
   boot.extraModulePackages = [
     config.boot.kernelPackages.evdi
   ];
 
   boot.kernelModules = [ "evdi" ];
-  boot.extraModprobeConfig = ''options evdi initial_device_count=1'';
+  boot.extraModprobeConfig = "options evdi initial_device_count=1";
 
   time.hardwareClockInLocalTime = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   nixpkgs.config.allowUnfree = true;
 
-
   # Networking
   networking.hostName = "nix";
   networking.networkmanager.enable = true;
-  
+
   programs.nix-ld.enable = true;
 
   # Keyboard
@@ -60,7 +59,7 @@
     "nix-command"
     "flakes"
   ];
-  
+
   # Fonts
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -118,7 +117,7 @@
     enable = true;
     gamescopeSession.enable = true;
   };
-  
+
   programs.gamescope = {
     enable = true;
     capSysNice = false;
@@ -187,21 +186,21 @@
   # Services
 
   services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true; 
+  services.desktopManager.gnome.enable = true;
   # Niri + DMS
   programs.niri.enable = true;
   programs.dux-shell = {
     enable = true;
 
     systemd = {
-      enable = true;             # Systemd service for auto-start
-      restartIfChanged = true;   # Auto-restart dms.service when dms-shell changes
+      enable = true; # Systemd service for auto-start
+      restartIfChanged = true; # Auto-restart dms.service when dms-shell changes
     };
-  
+
   };
   programs.xwayland.enable = true;
   services.upower.enable = true; # Battery detection
-  
+
   # Firewall
 
   networking.firewall.enable = true;
@@ -214,18 +213,17 @@
 
   # TRIM
   services.fstrim.enable = true;
-  
+
   # Gamemode
   programs.gamemode.enable = true;
 
   # Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
-  
 
   # VPN thing
   networking.firewall.checkReversePath = "loose";
-  
+
   # State Version
   system.stateVersion = "26.05";
 }

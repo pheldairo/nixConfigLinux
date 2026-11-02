@@ -10,22 +10,25 @@
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     ./nixvim
   ];
-  
+
   home.sessionPath = [
-  "$HOME/.npm-global/bin"
+    "$HOME/.npm-global/bin"
   ];
 
   xdg.portal = {
     enable = true;
-    xdgOpenUsePortal = true; 
+    xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
     ];
-  
+
     config = {
       common = {
-        default = [ "gnome" "gtk" ];
+        default = [
+          "gnome"
+          "gtk"
+        ];
       };
     };
   };
