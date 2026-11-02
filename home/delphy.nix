@@ -1,12 +1,13 @@
-{ pkgs, config, nixvim, ... }:
+{ inputs, pkgs, ... }:
 
 {
   home.username = "delphy";
   home.homeDirectory = "/home/delphy";
 
   imports = [
-    nixvim.homeModules.nixvim
-
+    inputs.nixvim.homeModules.nixvim
+    inputs.zen-browser.homeModules.beta
+    inputs.nix-flatpak.homeManagerModules.nix-flatpak
     ./nixvim
   ];
   
@@ -28,6 +29,19 @@
       };
     };
   };
+
+  # Declarative Flatpaks (Flathub remote is added by default)
+  services.flatpak = {
+    packages = [
+      "org.onlyoffice.desktopeditors"
+    ];
+    update.auto.enable = true;
+  };
+
+  programs.zen-browser = {
+    enable = true;
+    setAsDefaultBrowser = true;
+  };
   # Shell
   programs.zsh = {
     enable = true;
@@ -44,35 +58,22 @@
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
     ];
-    initExtra = ''
+    initContent = ''
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
   };
 
-  programs.kitty.settings = {
-    window_padding_width = 0;
-    window_margin_width = 0;
-    single_window_margin_width = 0;
-    cursor_trail = 1;
-    cursor_trail_decay = "0.1 0.4";
-    cursor_trail_start_threshold = 2;
-  };
-
   home.packages = with pkgs; [
-    zsh-powerlevel10k
     discord
-    cider-2
+    spotify
     obs-studio
     prismlauncher
     gh
-    lutris
     kdePackages.ark
-    pokemmo-installer
     filezilla
     chromium
     winetricks
     distrobox
-    pkg-config
     zoom-us
     faugus-launcher
     openrct2
@@ -82,9 +83,11 @@
     thunderbird
     snes9x
     nicotine-plus
-    antigravity
+    antigravity-ide
     unrar
     wl-mirror
+    mangohud
+    vulkan-tools
   ];
   home.stateVersion = "26.05";
 }
