@@ -10,6 +10,9 @@
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           nix
           rust
+          go
+          gomod
+          gosum
           lua
           bash
           json
@@ -50,11 +53,11 @@
             documentation.auto_show = true;
             ghost_text.enabled = true;
           };
-  
+
           signature.enabled = true;
         };
       };
-  };
+    };
     colorschemes.catppuccin.enable = true;
   };
 }
