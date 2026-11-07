@@ -178,7 +178,8 @@
     mokutil
     efitools
     sbctl
-
+    
+    jq
     xwayland-satellite
     wineWow64Packages.stable
   ];
